@@ -18,7 +18,7 @@ class ClientService
 
     public function getClients(?object $request = null): object
     {
-        $selects = ['name', 'social_name', 'cpf', 'father_name', 'mother_name', 'phone', 'email'];
+        $selects = ['id','name', 'social_name', 'cpf', 'father_name', 'mother_name', 'phone', 'email'];
         $perPage = isset($request['page']) ? 20 : null;
 
         return $this->clientRepository->findBy([
@@ -31,7 +31,7 @@ class ClientService
     public function getClientById(string $id): object
     {
         return $this->clientRepository->findBy([
-            'selects' => ['name', 'social_name', 'cpf', 'father_name', 'mother_name', 'phone', 'email'],
+            'selects' => ['id','name', 'social_name', 'cpf', 'father_name', 'mother_name', 'phone', 'email'],
             'filters' => ['id' => $id],
         ]);
     }
